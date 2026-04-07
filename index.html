@@ -3,826 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Core Society - Wireframe</title>
+  <title>Core Society | Reformer & Mat Pilates - Bucuresti</title>
+  <meta name="description" content="Core Society - studio de Reformer Pilates, Mat Pilates si functional training in Bucuresti. Clase pentru toate nivelurile, comunitate si evenimente sociale.">
+  <meta name="keywords" content="pilates, reformer pilates, mat pilates, bucuresti, studio pilates, functional training, core society">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Core Society | Reformer & Mat Pilates">
+  <meta property="og:description" content="Mai mult decat Pilates. Studio dedicat miscarii, comunitatii si bunastarii in Bucuresti.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ro_RO">
+  <!-- <meta property="og:image" content="https://www.coresociety.ro/images/og-image.jpg"> -->
+  <meta property="og:url" content="https://www.coresociety.ro">
+  <link rel="canonical" href="https://www.coresociety.ro">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
-  <style>
-    /* ===== RESET & BASE ===== */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
 
-    :root {
-      --black: #111111;
-      --dark: #1a1a1a;
-      --dark-gray: #2a2a2a;
-      --mid-gray: #3a3a3a;
-      --green: #4CD964;
-      --green-dark: #3ab854;
-      --white: #ffffff;
-      --light-gray: #cccccc;
-      --font: 'Montserrat', sans-serif;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--font);
-      background: var(--black);
-      color: var(--white);
-      line-height: 1.6;
-    }
-
-    /* ===== WIREFRAME ANNOTATION BAR ===== */
-    .wireframe-bar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background: #ff6b00;
-      color: white;
-      text-align: center;
-      padding: 8px;
-      font-size: 13px;
-      font-weight: 700;
-      z-index: 9999;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    /* ===== NAVIGATION ===== */
-    nav {
-      position: fixed;
-      top: 34px;
-      left: 0; right: 0;
-      background: rgba(17, 17, 17, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 16px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 1000;
-      border-bottom: 1px solid var(--dark-gray);
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .nav-logo .logo-icon {
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-    }
-
-    .nav-logo .logo-icon svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .nav-logo .logo-text {
-      font-weight: 900;
-      font-size: 18px;
-      letter-spacing: 2px;
-      line-height: 1.1;
-    }
-
-    .nav-logo .logo-text span {
-      display: block;
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      color: var(--light-gray);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--white);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      transition: color 0.3s;
-    }
-
-    .nav-links a:hover { color: var(--green); }
-
-    .nav-cta {
-      background: var(--green);
-      color: var(--black) !important;
-      padding: 10px 24px;
-      border-radius: 4px;
-      font-weight: 700 !important;
-    }
-
-    .nav-cta:hover {
-      background: var(--green-dark) !important;
-      color: var(--black) !important;
-    }
-
-    .nav-mobile-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 28px;
-      cursor: pointer;
-    }
-
-    /* ===== SECTIONS ===== */
-    section {
-      position: relative;
-    }
-
-    .section-annotation {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: #ff6b00;
-      color: white;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 3px;
-      z-index: 10;
-      letter-spacing: 0.5px;
-    }
-
-    /* ===== HERO ===== */
-    .hero {
-      margin-top: 34px;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-gray) 50%, var(--mid-gray) 100%);
-    }
-
-    .hero-bg-placeholder {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      color: #666;
-      border: 2px dashed #444;
-      margin: 20px;
-      border-radius: 8px;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, rgba(17,17,17,0.92) 0%, rgba(17,17,17,0.6) 60%, rgba(17,17,17,0.3) 100%);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 0 80px;
-      max-width: 720px;
-    }
-
-    .hero-content h1 {
-      font-size: 64px;
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 1.05;
-      margin-bottom: 24px;
-    }
-
-    .hero-content h1 .green { color: var(--green); }
-
-    .hero-content p {
-      font-size: 18px;
-      color: var(--light-gray);
-      margin-bottom: 36px;
-      max-width: 480px;
-      line-height: 1.7;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 16px;
-    }
-
-    .btn-primary {
-      background: var(--green);
-      color: var(--black);
-      padding: 14px 36px;
-      border: none;
-      border-radius: 4px;
-      font-family: var(--font);
-      font-weight: 700;
-      font-size: 15px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-
-    .btn-primary:hover { background: var(--green-dark); }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--white);
-      padding: 14px 36px;
-      border: 2px solid var(--white);
-      border-radius: 4px;
-      font-family: var(--font);
-      font-weight: 700;
-      font-size: 15px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-
-    .btn-outline:hover {
-      border-color: var(--green);
-      color: var(--green);
-    }
-
-    /* ===== ABOUT SECTION ===== */
-    .about {
-      padding: 100px 80px;
-      background: var(--dark);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .about-image-placeholder {
-      aspect-ratio: 4/3;
-      background: var(--dark-gray);
-      border: 2px dashed #444;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #666;
-      font-size: 14px;
-    }
-
-    .about-text h2 {
-      font-size: 42px;
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
-
-    .about-text h2 .green { color: var(--green); }
-
-    .about-text p {
-      font-size: 16px;
-      color: var(--light-gray);
-      line-height: 1.8;
-      margin-bottom: 16px;
-    }
-
-    /* ===== SERVICES SECTION ===== */
-    .services {
-      padding: 100px 80px;
-      background: var(--black);
-    }
-
-    .section-header {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 60px;
-    }
-
-    .section-header h2 {
-      font-size: 42px;
-      font-weight: 900;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      line-height: 1.1;
-    }
-
-    .section-header h2 .green { color: var(--green); }
-
-    .section-header p {
-      color: var(--light-gray);
-      font-size: 16px;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .service-card {
-      background: var(--dark);
-      border-radius: 8px;
-      padding: 40px 32px;
-      text-align: center;
-      border: 1px solid var(--dark-gray);
-      transition: border-color 0.3s, transform 0.3s;
-    }
-
-    .service-card:hover {
-      border-color: var(--green);
-      transform: translateY(-4px);
-    }
-
-    .service-icon {
-      width: 64px;
-      height: 64px;
-      background: var(--dark-gray);
-      border: 2px dashed #555;
-      border-radius: 50%;
-      margin: 0 auto 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--green);
-      font-size: 28px;
-    }
-
-    .service-card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      letter-spacing: 1px;
-    }
-
-    .service-card p {
-      color: var(--light-gray);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    /* ===== FEATURES STRIP ===== */
-    .features-strip {
-      padding: 60px 80px;
-      background: var(--green);
-      color: var(--black);
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .feature-item h4 {
-      font-size: 15px;
-      font-weight: 900;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    .feature-item p {
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .feature-item .feat-icon {
-      font-size: 32px;
-      margin-bottom: 12px;
-    }
-
-    /* ===== PRICING ===== */
-    .pricing {
-      padding: 100px 80px;
-      background: var(--dark);
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      max-width: 1000px;
-      margin: 0 auto 60px;
-    }
-
-    .pricing-card {
-      border-radius: 12px;
-      overflow: hidden;
-      text-align: center;
-      transition: transform 0.3s;
-    }
-
-    .pricing-card:hover { transform: translateY(-6px); }
-
-    .pricing-card-header {
-      padding: 28px 24px 16px;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    .pricing-card-body {
-      padding: 24px;
-    }
-
-    .pricing-card .plan-name {
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: 2px;
-    }
-
-    .pricing-card .plan-price {
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    .pricing-card .plan-sessions {
-      font-size: 72px;
-      font-weight: 900;
-      line-height: 1;
-      margin: 12px 0 4px;
-    }
-
-    .pricing-card .plan-sessions-label {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .pricing-card .plan-validity {
-      font-size: 13px;
-      opacity: 0.8;
-    }
-
-    /* Green card */
-    .card-green .pricing-card-header { background: #5dd470; color: var(--black); }
-    .card-green .pricing-card-body { background: var(--green); color: var(--black); }
-
-    /* White card */
-    .card-white .pricing-card-header { background: #f5f5f5; color: var(--black); }
-    .card-white .pricing-card-body { background: #e0e0e0; color: var(--black); }
-
-    /* Black card */
-    .card-black .pricing-card-header { background: #333; color: var(--white); }
-    .card-black .pricing-card-body { background: var(--dark-gray); color: var(--white); }
-
-    .pricing-offers {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      max-width: 800px;
-      margin: 0 auto;
-      padding-top: 40px;
-      border-top: 1px solid var(--green);
-    }
-
-    .pricing-offer h3 {
-      font-size: 22px;
-      font-weight: 900;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .pricing-offer p {
-      color: var(--light-gray);
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    /* ===== GALLERY / ATMOSPHERE ===== */
-    .gallery {
-      padding: 100px 80px;
-      background: var(--black);
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .gallery-item {
-      aspect-ratio: 1;
-      background: var(--dark-gray);
-      border: 2px dashed #444;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #666;
-      font-size: 13px;
-      text-align: center;
-      padding: 12px;
-    }
-
-    .gallery-item:first-child {
-      grid-column: span 2;
-      grid-row: span 2;
-      aspect-ratio: auto;
-    }
-
-    /* ===== CONTACT ===== */
-    .contact {
-      padding: 100px 80px;
-      background: var(--dark);
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .contact-info h2 {
-      font-size: 36px;
-      font-weight: 900;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-      line-height: 1.1;
-    }
-
-    .contact-info h2 .green { color: var(--green); }
-
-    .contact-detail {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .contact-detail .icon {
-      width: 40px;
-      height: 40px;
-      background: var(--green);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--black);
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-
-    .contact-detail .text h4 {
-      font-size: 14px;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-      letter-spacing: 1px;
-    }
-
-    .contact-detail .text p {
-      color: var(--light-gray);
-      font-size: 15px;
-    }
-
-    .contact-detail .text a {
-      color: var(--green);
-      text-decoration: none;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 16px;
-      margin-top: 32px;
-    }
-
-    .social-link {
-      width: 44px;
-      height: 44px;
-      border: 2px solid var(--dark-gray);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-      text-decoration: none;
-      font-size: 18px;
-      transition: border-color 0.3s, color 0.3s;
-    }
-
-    .social-link:hover {
-      border-color: var(--green);
-      color: var(--green);
-    }
-
-    .contact-map {
-      background: var(--dark-gray);
-      border: 2px dashed #444;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #666;
-      font-size: 14px;
-      min-height: 360px;
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      padding: 32px 80px;
-      background: var(--black);
-      border-top: 1px solid var(--dark-gray);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    footer p {
-      color: #666;
-      font-size: 13px;
-    }
-
-    footer .footer-links {
-      display: flex;
-      gap: 24px;
-    }
-
-    footer .footer-links a {
-      color: #666;
-      text-decoration: none;
-      font-size: 13px;
-      transition: color 0.3s;
-    }
-
-    footer .footer-links a:hover { color: var(--green); }
-
-    /* ===== MOBILE MENU ===== */
-    .nav-links.open {
-      display: flex;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 1024px) {
-      .hero-content h1 { font-size: 48px; }
-      .services-grid, .pricing-grid { grid-template-columns: repeat(2, 1fr); }
-      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-      .gallery-item:first-child { grid-column: span 2; grid-row: span 1; aspect-ratio: 2/1; }
-      .features-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 768px) {
-      /* --- Navigation --- */
-      nav {
-        padding: 12px 20px;
-        flex-wrap: wrap;
-      }
-
-      .nav-logo .logo-icon { width: 36px; height: 36px; }
-      .nav-logo .logo-text { font-size: 15px; }
-      .nav-logo .logo-text span { font-size: 8px; letter-spacing: 2px; }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        gap: 0;
-        order: 3;
-        padding-top: 16px;
-        border-top: 1px solid var(--dark-gray);
-        margin-top: 12px;
-      }
-
-      .nav-links.open { display: flex; }
-
-      .nav-links li {
-        width: 100%;
-      }
-
-      .nav-links a {
-        display: block;
-        padding: 14px 0;
-        font-size: 15px;
-        border-bottom: 1px solid var(--dark-gray);
-      }
-
-      .nav-links li:last-child a {
-        border-bottom: none;
-      }
-
-      .nav-cta {
-        text-align: center;
-        margin-top: 8px;
-        padding: 14px 24px !important;
-      }
-
-      .nav-mobile-toggle { display: block; }
-
-      /* --- Hero --- */
-      .hero { min-height: 85vh; }
-      .hero-content { padding: 0 20px; }
-      .hero-content h1 { font-size: 32px; margin-bottom: 16px; }
-      .hero-content p { font-size: 15px; margin-bottom: 28px; line-height: 1.6; }
-      .hero-buttons { flex-direction: column; gap: 12px; }
-      .btn-primary, .btn-outline {
-        display: block;
-        text-align: center;
-        padding: 16px 24px;
-        font-size: 14px;
-        width: 100%;
-      }
-
-      /* --- Section headers --- */
-      .section-header h2 { font-size: 28px; }
-      .section-header p { font-size: 14px; }
-
-      /* --- About --- */
-      .about { padding: 60px 20px; }
-      .about-grid { grid-template-columns: 1fr; gap: 32px; }
-      .about-text h2 { font-size: 28px; }
-      .about-text p { font-size: 15px; }
-
-      /* --- Services --- */
-      .services { padding: 60px 20px; }
-      .services-grid { grid-template-columns: 1fr; gap: 16px; }
-      .service-card { padding: 28px 24px; }
-      .service-card h3 { font-size: 16px; }
-
-      /* --- Features Strip --- */
-      .features-strip { padding: 40px 20px; }
-      .features-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
-      .feature-item h4 { font-size: 13px; }
-      .feature-item p { font-size: 12px; }
-
-      /* --- Pricing --- */
-      .pricing { padding: 60px 20px; }
-      .pricing-grid { grid-template-columns: 1fr; gap: 20px; max-width: 400px; }
-      .pricing-card .plan-sessions { font-size: 56px; }
-      .pricing-offers { grid-template-columns: 1fr; gap: 24px; padding-top: 32px; }
-      .pricing-offer h3 { font-size: 18px; }
-      .pricing-offer p { font-size: 14px; }
-
-      /* --- Gallery --- */
-      .gallery { padding: 60px 20px; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-      .gallery-item:first-child { grid-column: span 2; aspect-ratio: 16/9; }
-      .gallery-item { font-size: 11px; }
-
-      /* --- Contact --- */
-      .contact { padding: 60px 20px; }
-      .contact-grid { grid-template-columns: 1fr; gap: 32px; }
-      .contact-info h2 { font-size: 28px; }
-      .contact-map { min-height: 280px; }
-
-      /* --- Footer --- */
-      footer {
-        flex-direction: column;
-        gap: 16px;
-        text-align: center;
-        padding: 24px 20px;
-      }
-
-      footer .footer-links { flex-direction: column; gap: 8px; }
-
-      /* --- Wireframe bar --- */
-      .wireframe-bar { font-size: 10px; padding: 6px; }
-
-      /* --- Section annotations --- */
-      .section-annotation { font-size: 9px; padding: 3px 6px; }
-    }
-
-    /* Extra small phones */
-    @media (max-width: 380px) {
-      .hero-content h1 { font-size: 26px; }
-      .features-grid { grid-template-columns: 1fr; }
-      .nav-logo { gap: 8px; }
-      .nav-logo .logo-icon { width: 30px; height: 30px; }
-      .nav-logo .logo-text { font-size: 13px; }
-    }
-  </style>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- WIREFRAME ANNOTATION -->
-  <div class="wireframe-bar">WIREFRAME - Core Society Website - For Review Only</div>
-
   <!-- ==================== NAVIGATION ==================== -->
   <nav>
-    <div class="nav-logo">
+    <a href="#" class="nav-logo">
       <div class="logo-icon">
         <svg viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path d="M 24.4 30.9 A 34 34 0 1 1 30.9 75.6" fill="none" stroke-width="11" stroke-linecap="butt"/>
@@ -839,7 +49,7 @@
         CORE<br>SOCIETY
         <span>Reformer & Mat Pilates</span>
       </div>
-    </div>
+    </a>
     <ul class="nav-links">
       <li><a href="#about">Despre noi</a></li>
       <li><a href="#services">Servicii</a></li>
@@ -848,14 +58,13 @@
       <li><a href="#contact">Contact</a></li>
       <li><a href="#contact" class="nav-cta">Rezerva</a></li>
     </ul>
-    <button class="nav-mobile-toggle">&#9776;</button>
+    <button class="nav-mobile-toggle" aria-label="Meniu">&#9776;</button>
   </nav>
 
   <!-- ==================== HERO ==================== -->
   <section class="hero" id="hero">
-    <span class="section-annotation">SECTION: Hero</span>
     <div class="hero-bg">
-      <div class="hero-bg-placeholder">[ Full-width hero image: Pilates reformer / studio atmosphere ]</div>
+      <!-- Replace with: <img src="images/hero.webp" alt="Core Society Pilates Studio" loading="eager"> -->
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -870,10 +79,11 @@
 
   <!-- ==================== ABOUT ==================== -->
   <section class="about" id="about">
-    <span class="section-annotation">SECTION: About</span>
     <div class="about-grid">
-      <div class="about-image-placeholder">[ Image: Studio interior / Reformer equipment ]</div>
-      <div class="about-text">
+      <div class="about-image fade-in">
+        <!-- Replace with: <img src="images/about.webp" alt="Interior studio Core Society" loading="lazy"> -->
+      </div>
+      <div class="about-text fade-in">
         <h2>Ce gasesti<br><span class="green">la Core Society?</span></h2>
         <p>Core Society este mai mult decat un studio de Pilates. Este un spatiu dedicat miscarii, comunitatii si bunastarii - un loc unde fiecare sedinta te aduce mai aproape de cea mai buna versiune a ta.</p>
         <p>Oferim clase de Reformer Pilates, Mat Pilates, functional training si programe speciale pentru seniori. Dar nu ne oprim aici.</p>
@@ -883,39 +93,38 @@
 
   <!-- ==================== SERVICES ==================== -->
   <section class="services" id="services">
-    <span class="section-annotation">SECTION: Services</span>
-    <div class="section-header">
+    <div class="section-header fade-in">
       <h2>Mai mult <span class="green">decat miscare</span></h2>
       <p>Descoperă tot ce Core Society are de oferit</p>
     </div>
     <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">&#9673;</div>
+      <div class="service-card fade-in">
+        <div class="service-icon"><i data-lucide="move-diagonal"></i></div>
         <h3>Reformer Pilates</h3>
         <p>Clase pe aparate reformer, pentru tonifiere, flexibilitate si postura corecta.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">&#9673;</div>
+      <div class="service-card fade-in">
+        <div class="service-icon"><i data-lucide="circle-dot"></i></div>
         <h3>Mat Pilates</h3>
         <p>Clase pe saltea care imbunatatesc forta core-ului si echilibrul corpului.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">&#9673;</div>
+      <div class="service-card fade-in">
+        <div class="service-icon"><i data-lucide="dumbbell"></i></div>
         <h3>Functional Training</h3>
         <p>Zona dedicata antrenamentelor functionale pentru forta si rezistenta.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">&#9673;</div>
+      <div class="service-card fade-in">
+        <div class="service-icon"><i data-lucide="heart-pulse"></i></div>
         <h3>Clase pentru Seniori</h3>
         <p>Programe dedicate seniorilor, adaptate nevoilor si ritmului lor.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">&#9673;</div>
+      <div class="service-card fade-in">
+        <div class="service-icon"><i data-lucide="sparkles"></i></div>
         <h3>Evenimente Sociale</h3>
         <p>Brunch-uri, workshop-uri si expozitii de arta in comunitatea noastra.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">&#9673;</div>
+      <div class="service-card fade-in">
+        <div class="service-icon"><i data-lucide="baby"></i></div>
         <h3>Mom O'Clock</h3>
         <p>Evenimente speciale dedicate mamelor din comunitatea Core Society.</p>
       </div>
@@ -924,25 +133,24 @@
 
   <!-- ==================== FEATURES STRIP ==================== -->
   <section class="features-strip">
-    <span class="section-annotation" style="color: #111;">SECTION: Features Strip</span>
     <div class="features-grid">
       <div class="feature-item">
-        <div class="feat-icon">&#9733;</div>
+        <div class="feat-icon"><i data-lucide="award"></i></div>
         <h4>Reformer & Mat</h4>
         <p>Aparatura profesionala</p>
       </div>
       <div class="feature-item">
-        <div class="feat-icon">&#9829;</div>
+        <div class="feat-icon"><i data-lucide="users"></i></div>
         <h4>Comunitate</h4>
         <p>Mai mult decat un studio</p>
       </div>
       <div class="feature-item">
-        <div class="feat-icon">&#9998;</div>
+        <div class="feat-icon"><i data-lucide="target"></i></div>
         <h4>Clase Personalizate</h4>
         <p>Grupuri mici, atentie maxima</p>
       </div>
       <div class="feature-item">
-        <div class="feat-icon">&#8962;</div>
+        <div class="feat-icon"><i data-lucide="map-pin"></i></div>
         <h4>Locatie Premium</h4>
         <p>Drumul Dealul Bradului 98</p>
       </div>
@@ -951,15 +159,13 @@
 
   <!-- ==================== PRICING ==================== -->
   <section class="pricing" id="pricing">
-    <span class="section-annotation">SECTION: Pricing</span>
-    <div class="section-header">
+    <div class="section-header fade-in">
       <h2>Alege-ti <span class="green">abonamentul</span></h2>
       <p>Miscarea nu e o provocare de 30 de zile. Este stilul tau de viata.</p>
     </div>
 
     <div class="pricing-grid">
-      <!-- GREEN -->
-      <div class="pricing-card card-green">
+      <div class="pricing-card card-green fade-in">
         <div class="pricing-card-header">
           <div class="plan-name">GREEN</div>
           <div class="plan-price">500 lei</div>
@@ -970,8 +176,7 @@
           <div class="plan-validity">Valabil 30 zile</div>
         </div>
       </div>
-      <!-- WHITE -->
-      <div class="pricing-card card-white">
+      <div class="pricing-card card-white fade-in">
         <div class="pricing-card-header">
           <div class="plan-name">WHITE</div>
           <div class="plan-price">1000 lei</div>
@@ -982,8 +187,7 @@
           <div class="plan-validity">Valabil 30 zile</div>
         </div>
       </div>
-      <!-- BLACK -->
-      <div class="pricing-card card-black">
+      <div class="pricing-card card-black fade-in">
         <div class="pricing-card-header">
           <div class="plan-name">BLACK</div>
           <div class="plan-price">1200 lei</div>
@@ -996,7 +200,7 @@
       </div>
     </div>
 
-    <div class="pricing-offers">
+    <div class="pricing-offers fade-in">
       <div class="pricing-offer">
         <h3>Oferta de lansare</h3>
         <p>Sedinte One-to-One la pret de grup</p>
@@ -1010,29 +214,37 @@
 
   <!-- ==================== GALLERY ==================== -->
   <section class="gallery" id="gallery">
-    <span class="section-annotation">SECTION: Gallery</span>
-    <div class="section-header">
+    <div class="section-header fade-in">
       <h2>Atmosfera <span class="green">Core Society</span></h2>
       <p>Un spatiu creat pentru miscare si comunitate</p>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-item">[ Large photo: Studio overview ]</div>
-      <div class="gallery-item">[ Reformer class ]</div>
-      <div class="gallery-item">[ Mat class ]</div>
-      <div class="gallery-item">[ Community event ]</div>
-      <div class="gallery-item">[ Detail shot ]</div>
+      <div class="gallery-item fade-in">
+        <!-- <img src="images/gallery-1.webp" alt="Studio overview Core Society" loading="lazy"> -->
+      </div>
+      <div class="gallery-item fade-in">
+        <!-- <img src="images/gallery-2.webp" alt="Clasa de reformer pilates" loading="lazy"> -->
+      </div>
+      <div class="gallery-item fade-in">
+        <!-- <img src="images/gallery-3.webp" alt="Clasa de mat pilates" loading="lazy"> -->
+      </div>
+      <div class="gallery-item fade-in">
+        <!-- <img src="images/gallery-4.webp" alt="Eveniment comunitar Core Society" loading="lazy"> -->
+      </div>
+      <div class="gallery-item fade-in">
+        <!-- <img src="images/gallery-5.webp" alt="Detaliu echipament pilates" loading="lazy"> -->
+      </div>
     </div>
   </section>
 
   <!-- ==================== CONTACT ==================== -->
   <section class="contact" id="contact">
-    <span class="section-annotation">SECTION: Contact</span>
     <div class="contact-grid">
-      <div class="contact-info">
+      <div class="contact-info fade-in">
         <h2>Hai <span class="green">sa ne cunoastem</span></h2>
 
         <div class="contact-detail">
-          <div class="icon">&#9906;</div>
+          <div class="icon"><i data-lucide="map-pin"></i></div>
           <div class="text">
             <h4>Adresa</h4>
             <p>Drumul Dealul Bradului 98, Bucuresti</p>
@@ -1040,7 +252,7 @@
         </div>
 
         <div class="contact-detail">
-          <div class="icon">&#9742;</div>
+          <div class="icon"><i data-lucide="phone"></i></div>
           <div class="text">
             <h4>Telefon</h4>
             <p><a href="tel:+40754439371">+40 754 439 371</a></p>
@@ -1048,21 +260,29 @@
         </div>
 
         <div class="contact-detail">
-          <div class="icon">&#9993;</div>
+          <div class="icon"><i data-lucide="instagram"></i></div>
           <div class="text">
             <h4>Instagram</h4>
-            <p><a href="#">@THE_CORE_SOCIETY</a></p>
+            <p><a href="https://www.instagram.com/the_core_society" target="_blank" rel="noopener">@THE_CORE_SOCIETY</a></p>
           </div>
         </div>
 
         <div class="social-links">
-          <a href="#" class="social-link" title="Instagram">&#9737;</a>
-          <a href="#" class="social-link" title="Facebook">f</a>
-          <a href="#" class="social-link" title="WhatsApp">W</a>
+          <a href="https://www.instagram.com/the_core_society" target="_blank" rel="noopener" class="social-link" title="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="#" class="social-link" title="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="https://wa.me/40754439371" target="_blank" rel="noopener" class="social-link" title="WhatsApp"><i data-lucide="message-circle"></i></a>
         </div>
       </div>
 
-      <div class="contact-map">[ Google Maps Embed - Drumul Dealul Bradului 98 ]</div>
+      <div class="contact-map fade-in">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2850.5!2d26.1!3d44.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sDrumul+Dealul+Bradului+98%2C+Bucharest!5e0!3m2!1sro!2sro!4v1"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Locatie Core Society pe Google Maps">
+        </iframe>
+      </div>
     </div>
   </section>
 
@@ -1075,23 +295,6 @@
     </div>
   </footer>
 
-  <script>
-    // Mobile menu toggle
-    const toggle = document.querySelector('.nav-mobile-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    toggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-      toggle.textContent = navLinks.classList.contains('open') ? '\u2715' : '\u2630';
-    });
-
-    // Close menu when a link is tapped
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        toggle.textContent = '\u2630';
-      });
-    });
-  </script>
+  <script src="script.js" defer></script>
 </body>
 </html>
