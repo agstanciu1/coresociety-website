@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Core Society - Wireframe</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <style>
     /* ===== RESET & BASE ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -354,15 +355,20 @@
     .service-icon {
       width: 64px;
       height: 64px;
-      background: var(--dark-gray);
-      border: 2px dashed #555;
-      border-radius: 50%;
+      background: rgba(76, 217, 100, 0.1);
+      border: none;
+      border-radius: 16px;
       margin: 0 auto 24px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--green);
-      font-size: 28px;
+    }
+
+    .service-icon i {
+      width: 28px;
+      height: 28px;
+      stroke-width: 1.5;
     }
 
     .service-card h3 {
@@ -408,8 +414,13 @@
     }
 
     .feature-item .feat-icon {
-      font-size: 32px;
       margin-bottom: 12px;
+    }
+
+    .feature-item .feat-icon i {
+      width: 32px;
+      height: 32px;
+      stroke-width: 1.5;
     }
 
     /* ===== PRICING ===== */
@@ -583,8 +594,13 @@
       align-items: center;
       justify-content: center;
       color: var(--black);
-      font-size: 18px;
       flex-shrink: 0;
+    }
+
+    .contact-detail .icon i {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2;
     }
 
     .contact-detail .text h4 {
@@ -614,15 +630,20 @@
     .social-link {
       width: 44px;
       height: 44px;
-      border: 2px solid var(--dark-gray);
+      border: 1.5px solid var(--dark-gray);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--white);
       text-decoration: none;
-      font-size: 18px;
       transition: border-color 0.3s, color 0.3s;
+    }
+
+    .social-link i {
+      width: 18px;
+      height: 18px;
+      stroke-width: 1.5;
     }
 
     .social-link:hover {
@@ -871,32 +892,32 @@
     </div>
     <div class="services-grid">
       <div class="service-card">
-        <div class="service-icon">&#9673;</div>
+        <div class="service-icon"><i data-lucide="move-diagonal"></i></div>
         <h3>Reformer Pilates</h3>
         <p>Clase pe aparate reformer, pentru tonifiere, flexibilitate si postura corecta.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">&#9673;</div>
+        <div class="service-icon"><i data-lucide="circle-dot"></i></div>
         <h3>Mat Pilates</h3>
         <p>Clase pe saltea care imbunatatesc forta core-ului si echilibrul corpului.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">&#9673;</div>
+        <div class="service-icon"><i data-lucide="dumbbell"></i></div>
         <h3>Functional Training</h3>
         <p>Zona dedicata antrenamentelor functionale pentru forta si rezistenta.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">&#9673;</div>
+        <div class="service-icon"><i data-lucide="heart-pulse"></i></div>
         <h3>Clase pentru Seniori</h3>
         <p>Programe dedicate seniorilor, adaptate nevoilor si ritmului lor.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">&#9673;</div>
+        <div class="service-icon"><i data-lucide="sparkles"></i></div>
         <h3>Evenimente Sociale</h3>
         <p>Brunch-uri, workshop-uri si expozitii de arta in comunitatea noastra.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">&#9673;</div>
+        <div class="service-icon"><i data-lucide="baby"></i></div>
         <h3>Mom O'Clock</h3>
         <p>Evenimente speciale dedicate mamelor din comunitatea Core Society.</p>
       </div>
@@ -908,22 +929,22 @@
     <span class="section-annotation" style="color: #111;">SECTION: Features Strip</span>
     <div class="features-grid">
       <div class="feature-item">
-        <div class="feat-icon">&#9733;</div>
+        <div class="feat-icon"><i data-lucide="award"></i></div>
         <h4>Reformer & Mat</h4>
         <p>Aparatura profesionala</p>
       </div>
       <div class="feature-item">
-        <div class="feat-icon">&#9829;</div>
+        <div class="feat-icon"><i data-lucide="users"></i></div>
         <h4>Comunitate</h4>
         <p>Mai mult decat un studio</p>
       </div>
       <div class="feature-item">
-        <div class="feat-icon">&#9998;</div>
+        <div class="feat-icon"><i data-lucide="target"></i></div>
         <h4>Clase Personalizate</h4>
         <p>Grupuri mici, atentie maxima</p>
       </div>
       <div class="feature-item">
-        <div class="feat-icon">&#8962;</div>
+        <div class="feat-icon"><i data-lucide="map-pin"></i></div>
         <h4>Locatie Premium</h4>
         <p>Drumul Dealul Bradului 98</p>
       </div>
@@ -1013,7 +1034,7 @@
         <h2>Hai <span class="green">sa ne cunoastem</span></h2>
 
         <div class="contact-detail">
-          <div class="icon">&#9906;</div>
+          <div class="icon"><i data-lucide="map-pin"></i></div>
           <div class="text">
             <h4>Adresa</h4>
             <p>Drumul Dealul Bradului 98, Bucuresti</p>
@@ -1021,7 +1042,7 @@
         </div>
 
         <div class="contact-detail">
-          <div class="icon">&#9742;</div>
+          <div class="icon"><i data-lucide="phone"></i></div>
           <div class="text">
             <h4>Telefon</h4>
             <p><a href="tel:+40754439371">+40 754 439 371</a></p>
@@ -1029,7 +1050,7 @@
         </div>
 
         <div class="contact-detail">
-          <div class="icon">&#9993;</div>
+          <div class="icon"><i data-lucide="instagram"></i></div>
           <div class="text">
             <h4>Instagram</h4>
             <p><a href="#">@THE_CORE_SOCIETY</a></p>
@@ -1037,9 +1058,9 @@
         </div>
 
         <div class="social-links">
-          <a href="#" class="social-link" title="Instagram">&#9737;</a>
-          <a href="#" class="social-link" title="Facebook">f</a>
-          <a href="#" class="social-link" title="WhatsApp">W</a>
+          <a href="#" class="social-link" title="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="#" class="social-link" title="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="#" class="social-link" title="WhatsApp"><i data-lucide="message-circle"></i></a>
         </div>
       </div>
 
@@ -1071,6 +1092,9 @@
         toggle.textContent = '\u2630';
       });
     });
+
+    // Initialize Lucide icons
+    lucide.createIcons();
   </script>
 </body>
 </html>
