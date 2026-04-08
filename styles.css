@@ -66,18 +66,9 @@ nav {
   color: var(--white);
 }
 
-.nav-logo .logo-icon {
-  width: 44px;
+.nav-logo-img {
   height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--white);
-}
-
-.nav-logo .logo-icon svg {
-  width: 100%;
-  height: 100%;
+  width: auto;
 }
 
 .nav-logo .logo-text {
@@ -693,9 +684,7 @@ footer p {
     flex-wrap: wrap;
   }
 
-  .nav-logo .logo-icon { width: 36px; height: 36px; }
-  .nav-logo .logo-text { font-size: 15px; }
-  .nav-logo .logo-text span { font-size: 8px; letter-spacing: 2px; }
+  .nav-logo-img { height: 36px; }
 
   .nav-links {
     display: none;
@@ -788,7 +777,5 @@ footer p {
 @media (max-width: 380px) {
   .hero-content h1 { font-size: 26px; }
   .features-grid { grid-template-columns: 1fr; }
-  .nav-logo { gap: 8px; }
-  .nav-logo .logo-icon { width: 30px; height: 30px; }
-  .nav-logo .logo-text { font-size: 13px; }
+  .nav-logo-img { height: 28px; }
 }
