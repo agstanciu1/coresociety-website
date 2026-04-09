@@ -521,6 +521,113 @@ section {
   aspect-ratio: auto;
 }
 
+/* ===== FAQ ===== */
+.faq {
+  padding: 100px 80px;
+  background: var(--black);
+}
+
+.faq-subtitle-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.faq-subtitle-row p {
+  margin: 0;
+}
+
+.faq-expand-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  background: none;
+  border: 1px solid var(--dark-gray);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.faq-expand-btn:hover {
+  border-color: var(--green);
+}
+
+.faq-expand-icon {
+  color: var(--green);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.faq-list {
+  max-width: 900px;
+  margin: 0 auto;
+  display: none;
+}
+
+.faq-list--open {
+  display: block;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--dark-gray);
+}
+
+.faq-item:first-child {
+  border-top: 1px solid var(--dark-gray);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--white);
+  cursor: pointer;
+  list-style: none;
+  letter-spacing: 0.5px;
+  transition: color 0.3s;
+}
+
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-question::after {
+  content: '+';
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--green);
+  margin-left: 16px;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+
+.faq-item[open] .faq-question::after {
+  content: '\2212';
+}
+
+.faq-question:hover {
+  color: var(--green);
+}
+
+.faq-answer {
+  padding: 0 0 20px 0;
+}
+
+.faq-answer p {
+  color: var(--light-gray);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
 /* ===== CONTACT ===== */
 .contact {
   padding: 100px 80px;
@@ -758,6 +865,10 @@ footer p {
   .gallery { padding: 60px 20px; }
   .gallery-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
   .gallery-item:first-child { grid-column: span 2; aspect-ratio: 16/9; }
+
+  .faq { padding: 60px 20px; }
+  .faq-question { font-size: 14px; padding: 16px 0; }
+  .faq-answer p { font-size: 13px; }
 
   .contact { padding: 60px 20px; }
   .contact-grid { grid-template-columns: 1fr; gap: 32px; }
