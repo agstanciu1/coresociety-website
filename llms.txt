@@ -25,7 +25,7 @@ All prices are in Romanian Lei (RON). Currency: RON.
 
 Special offers:
 - **Launch Offer**: One-to-one sessions at group pricing.
-- **Friendly Start**: First session costs 50 RON, deducted from subscription purchase.
+- **Friendly Start**: First session costs 100 RON, deducted from subscription purchase.
 
 ## Contact
 
@@ -45,9 +45,9 @@ Special offers:
 ## Payment
 
 - Accepted currencies: RON
-- Accepted payment methods: Cash, Credit Card
+- Accepted payment methods: Credit Card only
 - Price range: $$
 
 ## Location
 
-Core Society is situated in the Dealul Bradului area of Bucharest, Romania. The full address is Drumul Dealul Bradului 97, Bucuresti, Romania. Approximate GPS coordinates: 44.467 N, 26.120 E.
+Core Society is situated in the Dealul Bradului area of Bucharest, Romania. The full address is Drumul Dealul Bradului 97, Bucuresti, Romania. Approximate GPS coordinates: 44.467 N, 26.120 E. The studio offers dedicated parking spaces for clients, clearly marked on-site.
