@@ -783,6 +783,10 @@
       document.getElementById('sigHint').style.display = 'block';
     }
 
+    // ===== Apps Script URL =====
+    // IMPORTANT: Replace with your deployed Google Apps Script web app URL
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz1VIREpZ3D3nHgo2Jg-5gE5HPjsIokuVOndjYepmNlS4oM4LT_bCOxrkenhm87MQlD/exec';
+
     // ===== Submit =====
     function submitForm() {
       const nume = document.getElementById('nume').value.trim();
@@ -812,10 +816,55 @@
         return;
       }
 
+      // Collect form data
+      const refuzMedia = document.querySelector('.refuz[onclick*="toggleRefuzMedia"]').classList.contains('selected');
+      const getRadio = (name) => {
+        const checked = document.querySelector('input[name="' + name + '"]:checked');
+        return checked ? (checked.value === 'da' ? 'Da' : 'Nu') : '—';
+      };
+
+      const payload = {
+        nume: nume,
+        email: email,
+        telefon: telefon,
+        isMinor: isMinor,
+        minorNume: isMinor ? document.getElementById('minorNume').value.trim() : '',
+        minorDOB: isMinor ? document.getElementById('minorDOB').value : '',
+        minorRelatie: isMinor ? document.getElementById('minorRelatie').value.trim() : '',
+        foto_video: refuzMedia ? 'Nu' : getRadio('foto_video'),
+        social_media: refuzMedia ? 'Nu' : getRadio('social_media'),
+        marketing: refuzMedia ? 'Nu' : getRadio('marketing'),
+        newsletter: getRadio('newsletter'),
+        signature: canvas.toDataURL('image/png'),
+      };
+
+      // Disable button while sending
+      const btn = document.querySelector('.btn-form-submit');
+      btn.textContent = 'Se trimite...';
+      btn.disabled = true;
       err.style.display = 'none';
-      document.getElementById('formWrap').style.display = 'none';
-      document.getElementById('successScreen').style.display = 'block';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify(payload),
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'ok') {
+          document.getElementById('formWrap').style.display = 'none';
+          document.getElementById('successScreen').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          showError(err, 'A apărut o eroare la trimitere. Te rugăm să încerci din nou.');
+        }
+      })
+      .catch(() => {
+        showError(err, 'A apărut o eroare la trimitere. Te rugăm să încerci din nou.');
+      })
+      .finally(() => {
+        btn.textContent = 'Confirm și semnez consimțământul';
+        btn.disabled = false;
+      });
     }
 
     function showError(el, msg) {
