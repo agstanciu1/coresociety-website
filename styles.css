@@ -408,6 +408,10 @@ section {
   overflow: hidden;
   text-align: center;
   transition: transform 0.3s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
 }
 
 .pricing-card:hover { transform: translateY(-6px); }
