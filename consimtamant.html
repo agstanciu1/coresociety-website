@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consimțământ GDPR — Core Society</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="images/logo-symbol.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ===== FORM PAGE OVERRIDES ===== */
+    .form-page {
+      padding-top: 100px;
+      padding-bottom: 80px;
+      background: var(--black);
+      min-height: 100vh;
+    }
+
+    .form-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .form-header h1 {
+      font-size: 36px;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .form-header p {
+      color: var(--light-gray);
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ===== FORM SECTIONS ===== */
+    .form-section {
+      background: var(--dark);
+      border-radius: 0;
+      padding: 32px;
+      margin-bottom: 3px;
+      border-left: 3px solid var(--green);
+    }
+
+    .form-section:first-child { border-radius: 8px 8px 0 0; }
+    .form-section:last-of-type { border-radius: 0 0 8px 8px; }
+
+    .form-section-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--dark-gray);
+    }
+
+    /* ===== FIELDS ===== */
+    .form-field { margin-bottom: 20px; }
+    .form-field:last-child { margin-bottom: 0; }
+
+    .form-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--light-gray);
+      margin-bottom: 8px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid var(--dark-gray);
+      border-radius: 6px;
+      font-size: 15px;
+      font-family: var(--font);
+      color: var(--white);
+      background: var(--dark-gray);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .form-input::placeholder { color: #666; }
+    .form-input:focus { outline: none; border-color: var(--green); background: var(--mid-gray); }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .required { color: var(--green); }
+
+    /* ===== MINOR TOGGLE ===== */
+    .minor-toggle {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px;
+      background: var(--dark-gray);
+      border-radius: 6px;
+      cursor: pointer;
+      border: 1.5px solid var(--mid-gray);
+      transition: border-color 0.2s;
+    }
+
+    .minor-toggle:hover { border-color: var(--white); }
+    .minor-toggle.active { border-color: var(--green); background: rgba(76, 217, 100, 0.08); }
+
+    .toggle-switch {
+      width: 44px;
+      height: 24px;
+      background: #555;
+      border-radius: 12px;
+      position: relative;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+
+    .minor-toggle.active .toggle-switch { background: var(--green); }
+
+    .toggle-knob {
+      width: 18px;
+      height: 18px;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      transition: left 0.2s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+
+    .minor-toggle.active .toggle-knob { left: 23px; }
+
+    .toggle-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .toggle-sub {
+      font-size: 12px;
+      color: #888;
+      margin-top: 2px;
+    }
+
+    .minor-section {
+      display: none;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px dashed var(--mid-gray);
+    }
+
+    .minor-section.visible { display: block; }
+
+    /* ===== INFO & NOTICE BOXES ===== */
+    .info-box {
+      background: var(--dark-gray);
+      border-left: 3px solid var(--green);
+      padding: 16px 18px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--light-gray);
+      margin-bottom: 24px;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .info-box strong { color: var(--white); }
+
+    .notice-box {
+      background: rgba(240, 165, 0, 0.08);
+      border-left: 3px solid #f0a500;
+      padding: 16px 18px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--light-gray);
+      margin-bottom: 24px;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .notice-box strong { color: var(--white); }
+
+    /* ===== RADIO DA/NU ===== */
+    .opt-group { display: flex; flex-direction: column; gap: 8px; }
+
+    .opt-group-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 4px;
+    }
+
+    .consent-groups {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .radio-row { display: flex; flex-direction: column; gap: 8px; }
+
+    .radio-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      padding: 14px 16px;
+      border: 1.5px solid var(--dark-gray);
+      border-radius: 6px;
+      transition: all 0.15s;
+      user-select: none;
+    }
+
+    .radio-item input[type="radio"] { display: none; }
+    .radio-item:hover { border-color: #666; }
+    .radio-item.selected { border-color: var(--green); background: rgba(76, 217, 100, 0.08); }
+    .radio-item.refuz.selected { border-color: #cc3333; background: rgba(204, 51, 51, 0.08); }
+
+    .radio-circle {
+      width: 22px;
+      height: 22px;
+      min-width: 22px;
+      border: 2px solid #555;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+      transition: all 0.15s;
+    }
+
+    .radio-item.selected .radio-circle.da { background: var(--green); border-color: var(--green); }
+    .radio-item.selected .radio-circle.nu { background: #cc3333; border-color: #cc3333; }
+    .radio-circle svg { display: none; }
+    .radio-item.selected .radio-circle svg { display: block; }
+
+    .check-text {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--light-gray);
+    }
+
+    .check-text strong { color: var(--white); }
+
+    /* ===== SIGNATURE ===== */
+    .sig-wrap {
+      border: 1.5px solid var(--dark-gray);
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--dark-gray);
+      position: relative;
+    }
+
+    .sig-wrap:focus-within { border-color: var(--green); }
+
+    .sig-canvas {
+      display: block;
+      width: 100%;
+      height: 160px;
+      cursor: crosshair;
+      touch-action: none;
+      background: #2a2a2a;
+    }
+
+    .sig-hint {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #555;
+      font-size: 13px;
+      pointer-events: none;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .sig-actions {
+      display: flex;
+      justify-content: flex-end;
+      padding: 8px 12px;
+      border-top: 1px solid var(--mid-gray);
+      background: var(--dark);
+    }
+
+    .btn-clear-sig {
+      font-size: 12px;
+      color: #888;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 8px;
+      font-family: var(--font);
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+
+    .btn-clear-sig:hover { color: var(--white); }
+
+    .sig-note {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 14px;
+      line-height: 1.7;
+    }
+
+    /* ===== ERROR ===== */
+    .form-error {
+      display: none;
+      color: #ff6b6b;
+      font-size: 13px;
+      padding: 14px 18px;
+      background: rgba(204, 51, 51, 0.1);
+      border-radius: 6px;
+      border-left: 3px solid #cc3333;
+      margin-top: 16px;
+    }
+
+    /* ===== SUBMIT BUTTON ===== */
+    .btn-form-submit {
+      width: 100%;
+      padding: 18px;
+      background: var(--green);
+      color: var(--black);
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: var(--font);
+      transition: background 0.3s;
+      margin-top: 24px;
+    }
+
+    .btn-form-submit:hover { background: var(--green-dark); }
+
+    /* ===== SUCCESS SCREEN ===== */
+    .success-screen {
+      display: none;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 32px;
+    }
+
+    .success-screen h2 {
+      font-size: 28px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 16px;
+    }
+
+    .success-screen p {
+      color: var(--light-gray);
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    .success-screen strong { color: var(--green); }
+
+    .btn-form-reset {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 14px 36px;
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: var(--font);
+      transition: all 0.3s;
+    }
+
+    .btn-form-reset:hover {
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .form-page { padding-top: 80px; padding-bottom: 60px; }
+
+      .form-header h1 { font-size: 26px; }
+      .form-header p { font-size: 14px; }
+      .form-header { margin-bottom: 32px; }
+
+      .form-section { padding: 24px 20px; }
+
+      .form-row-2 { grid-template-columns: 1fr; }
+
+      .check-text { font-size: 13px; }
+      .radio-item { padding: 12px 14px; }
+
+      .success-screen { padding: 60px 20px; }
+      .success-screen h2 { font-size: 22px; }
+    }
+
+    @media (max-width: 380px) {
+      .form-header h1 { font-size: 22px; }
+      .form-section { padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo-symbol.svg" alt="Core Society" class="nav-logo-img">
+      <div class="logo-text">
+        CORE<br>SOCIETY
+        <span>Reformer & Mat Pilates</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">Despre noi</a></li>
+      <li><a href="index.html#services">Servicii</a></li>
+      <li><a href="index.html#pricing">Abonamente</a></li>
+      <li><a href="index.html#gallery">Galerie</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="https://goteamup.com/p/11436670-core-society/c/appointment_types?page=1" target="_blank" rel="noopener" class="nav-cta">Rezerva</a></li>
+    </ul>
+    <button class="nav-mobile-toggle" aria-label="Meniu">&#9776;</button>
+  </nav>
+
+  <!-- ==================== GDPR FORM ==================== -->
+  <section class="form-page">
+    <div class="form-container">
+
+      <div class="form-header fade-in">
+        <h1>Consimțământ <span class="green">GDPR</span></h1>
+        <p>Completează formularul de mai jos pentru a-ți exprima consimțământul privind prelucrarea datelor personale.</p>
+      </div>
+
+      <div id="formWrap">
+
+        <!-- Date personale -->
+        <div class="form-section fade-in">
+          <div class="form-section-title">Date personale</div>
+          <div class="form-field">
+            <label class="form-label">Nume și prenume <span class="required">*</span></label>
+            <input type="text" class="form-input" id="nume" placeholder="ex: Ionescu Maria">
+          </div>
+          <div class="form-row-2">
+            <div class="form-field">
+              <label class="form-label">Adresă de email <span class="required">*</span></label>
+              <input type="email" class="form-input" id="email" placeholder="ex: maria@email.com">
+            </div>
+            <div class="form-field">
+              <label class="form-label">Număr de telefon <span class="required">*</span></label>
+              <input type="tel" class="form-input" id="telefon" placeholder="ex: 07xx xxx xxx">
+            </div>
+          </div>
+        </div>
+
+        <!-- Participant minor -->
+        <div class="form-section fade-in">
+          <div class="form-section-title">Participant minor</div>
+          <div class="minor-toggle" id="minorToggle" onclick="toggleMinor()">
+            <div class="toggle-switch"><div class="toggle-knob"></div></div>
+            <div>
+              <div class="toggle-label">Formularul este pentru un minor</div>
+              <div class="toggle-sub">Activează dacă persoana are sub 18 ani</div>
+            </div>
+          </div>
+
+          <div class="minor-section" id="minorSection">
+            <div class="form-field">
+              <label class="form-label">Nume și prenume minor <span class="required">*</span></label>
+              <input type="text" class="form-input" id="minorNume" placeholder="ex: Ionescu Ana">
+            </div>
+            <div class="form-row-2">
+              <div class="form-field">
+                <label class="form-label">Data nașterii minor <span class="required">*</span></label>
+                <input type="date" class="form-input" id="minorDOB">
+              </div>
+              <div class="form-field">
+                <label class="form-label">Relația cu minorul <span class="required">*</span></label>
+                <input type="text" class="form-input" id="minorRelatie" placeholder="ex: Mamă, Tată, Tutore">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Consimțământ -->
+        <div class="form-section fade-in">
+          <div class="form-section-title">Scopul prelucrării</div>
+
+          <div class="info-box">
+            Datele sunt prelucrate de <strong>Core Society SRL</strong>, Drumul Dealu Bradului 97 — contact: <strong>hello@coresociety.ro</strong>, conform GDPR (Reg. UE 2016/679, Art. 6(1)(a)). Datele vor fi păstrate <strong>3 ani</strong>. Furnizarea datelor este voluntară, însă necesară pentru participarea la activitățile studioului. Poți retrage consimțământul oricând scriind la adresa de email de mai sus, fără a afecta legalitatea prelucrării anterioare.
+            <br><br>
+            <strong>Drepturile tale:</strong> Ai dreptul de acces, rectificare, ștergere, restricționarea prelucrării, portabilitatea datelor și dreptul de opoziție. Pentru exercitarea acestor drepturi, contactează-ne la <strong>hello@coresociety.ro</strong>. De asemenea, ai dreptul de a depune o plângere la <strong>ANSPDCP</strong> (<a href="https://www.dataprotection.ro" target="_blank" rel="noopener" style="color:var(--green);">www.dataprotection.ro</a>).
+          </div>
+
+          <div class="notice-box">
+            📷 <strong>Notă privind filmările:</strong> Studioul nostru realizează periodic fotografii și înregistrări video în timpul claselor. Dacă <strong>nu dorești să apari în cadre</strong>, te rugăm să informezi instructorul înainte de începerea clasei — acesta se va asigura că ești poziționat în afara cadrului de filmare. Îți mulțumim pentru înțelegere.
+          </div>
+
+          <div class="consent-groups">
+
+            <div class="opt-group">
+              <div class="opt-group-title">Fotografiere și filmare</div>
+              <div class="radio-row">
+                <label class="radio-item selected" onclick="selectMediaDa(this,'foto_video')">
+                  <input type="radio" name="foto_video" value="da" checked>
+                  <div class="radio-circle da">
+                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <span class="check-text"><strong>Da</strong> — Consimț la fotografierea și/sau filmarea mea în cadrul activităților studioului</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="opt-group">
+              <div class="opt-group-title">Publicare pe rețele sociale și site</div>
+              <div class="radio-row">
+                <label class="radio-item selected" onclick="selectMediaDa(this,'social_media')">
+                  <input type="radio" name="social_media" value="da" checked>
+                  <div class="radio-circle da">
+                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <span class="check-text"><strong>Da</strong> — Consimț la publicarea imaginilor/videoclipurilor pe rețelele sociale și site-ul studioului</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="opt-group">
+              <div class="opt-group-title">Materiale de marketing</div>
+              <div class="radio-row">
+                <label class="radio-item selected" onclick="selectMediaDa(this,'marketing')">
+                  <input type="radio" name="marketing" value="da" checked>
+                  <div class="radio-circle da">
+                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <span class="check-text"><strong>Da</strong> — Consimț la utilizarea imaginilor mele în materiale de marketing tipărite sau digitale</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="opt-group">
+              <div class="opt-group-title">Refuz fotografiere, publicare și marketing</div>
+              <div class="radio-row">
+                <div class="radio-item refuz" onclick="toggleRefuzMedia(this)">
+                  <div class="radio-circle nu">
+                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><line x1="2" y1="2" x2="8" y2="8" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="8" y1="2" x2="2" y2="8" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+                  </div>
+                  <span class="check-text"><strong>Nu</strong> — Nu sunt de acord cu fotografierea, filmarea, publicarea pe rețele sociale/site sau utilizarea imaginilor mele în materiale de marketing. Voi informa instructorul pentru a fi poziționat în afara cadrului.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="opt-group">
+              <div class="opt-group-title">Newsletter și comunicări de marketing</div>
+              <div class="radio-row">
+                <label class="radio-item selected" onclick="selectRadio(this,'newsletter','da')">
+                  <input type="radio" name="newsletter" value="da" checked>
+                  <div class="radio-circle da">
+                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><polyline points="1,4 4,7 9,1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <span class="check-text"><strong>Da</strong> — Consimț la primirea de comunicări de marketing (newsletter, oferte)</span>
+                </label>
+                <label class="radio-item refuz" onclick="selectRadio(this,'newsletter','nu')">
+                  <input type="radio" name="newsletter" value="nu">
+                  <div class="radio-circle nu">
+                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><line x1="2" y1="2" x2="8" y2="8" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="8" y1="2" x2="2" y2="8" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+                  </div>
+                  <span class="check-text"><strong>Nu</strong> — Nu doresc să primesc comunicări de marketing</span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Semnătură -->
+        <div class="form-section fade-in">
+          <div class="form-section-title">Semnătură <span class="required">*</span></div>
+          <p class="sig-note">Prin semnarea de mai jos confirm că am citit și am înțeles informațiile de mai sus și îmi exprim consimțământul liber și informat.</p>
+          <div class="sig-wrap">
+            <canvas class="sig-canvas" id="sigCanvas"></canvas>
+            <div class="sig-hint" id="sigHint">&#9997;&#65039;<br>Semnează aici cu degetul sau mouse-ul</div>
+            <div class="sig-actions">
+              <button class="btn-clear-sig" type="button" onclick="clearSig()">Șterge semnătura</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-error" id="errorMsg"></div>
+        <button class="btn-form-submit" type="button" onclick="submitForm()">Confirm și semnez consimțământul</button>
+
+      </div>
+
+      <!-- Success -->
+      <div class="success-screen" id="successScreen">
+        <div class="success-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <polyline points="7,18 15,26 29,10" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2>Mulțumim</h2>
+        <p>Consimțământul tău a fost înregistrat cu succes.<br>Ne bucurăm că faci parte din comunitatea <strong>Core Society</strong>.</p>
+        <button class="btn-form-reset" type="button" onclick="resetForm()">Formular nou</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <p>&copy; 2026 Core Society. Toate drepturile rezervate.</p>
+    <div class="footer-links">
+      <a href="#">Termeni si conditii</a>
+      <a href="#">Politica de confidentialitate</a>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Mobile nav toggle =====
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.querySelector('.nav-mobile-toggle');
+      const navLinks = document.querySelector('.nav-links');
+
+      toggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+        toggle.textContent = navLinks.classList.contains('open') ? '\u2715' : '\u2630';
+      });
+
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          toggle.textContent = '\u2630';
+        });
+      });
+
+      // Initialize Lucide icons
+      lucide.createIcons();
+
+      // Scroll-based fade-in animations
+      const faders = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      faders.forEach(el => observer.observe(el));
+
+      // Nav border on scroll
+      const nav = document.querySelector('nav');
+      window.addEventListener('scroll', () => {
+        nav.style.borderBottomColor = window.scrollY > 50 ? 'rgba(76, 217, 100, 0.2)' : '';
+      }, { passive: true });
+
+      // Initialize canvas
+      initCanvas();
+    });
+
+    // ===== Minor toggle =====
+    let isMinor = false;
+    function toggleMinor() {
+      isMinor = !isMinor;
+      document.getElementById('minorToggle').classList.toggle('active', isMinor);
+      document.getElementById('minorSection').classList.toggle('visible', isMinor);
+    }
+
+    // ===== Radio Da/Nu =====
+    function selectRadio(el, name, val) {
+      document.querySelectorAll('label.radio-item input[name="' + name + '"]').forEach(r => {
+        r.closest('label').classList.remove('selected');
+      });
+      el.classList.add('selected');
+      el.querySelector('input[type="radio"]').checked = true;
+    }
+
+    // ===== Da for foto/social/marketing — also clears combined Nu =====
+    function selectMediaDa(el, name) {
+      el.classList.add('selected');
+      el.querySelector('input[type="radio"]').checked = true;
+      document.querySelector('.refuz[onclick*="toggleRefuzMedia"]').classList.remove('selected');
+    }
+
+    // ===== Combined refuz for foto/social/marketing =====
+    function toggleRefuzMedia(el) {
+      const isActive = el.classList.contains('selected');
+      const mediaNames = ['foto_video', 'social_media', 'marketing'];
+
+      if (isActive) {
+        // Undo refusal — re-select Da for all 3
+        el.classList.remove('selected');
+        mediaNames.forEach(name => {
+          const daLabel = document.querySelector('label.radio-item input[name="' + name + '"][value="da"]').closest('label');
+          daLabel.classList.add('selected');
+          daLabel.querySelector('input[type="radio"]').checked = true;
+        });
+      } else {
+        // Activate refusal — deselect Da for all 3
+        el.classList.add('selected');
+        mediaNames.forEach(name => {
+          const daLabel = document.querySelector('label.radio-item input[name="' + name + '"][value="da"]').closest('label');
+          daLabel.classList.remove('selected');
+          daLabel.querySelector('input[type="radio"]').checked = false;
+        });
+      }
+    }
+
+    // ===== Canvas signature =====
+    let canvas, ctx, drawing = false, hasSig = false;
+
+    function initCanvas() {
+      canvas = document.getElementById('sigCanvas');
+      ctx = canvas.getContext('2d');
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      canvas.addEventListener('mousedown', e => { drawing = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); });
+      canvas.addEventListener('mousemove', e => { if (!drawing) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); hasSig = true; document.getElementById('sigHint').style.display = 'none'; });
+      canvas.addEventListener('mouseup', () => drawing = false);
+      canvas.addEventListener('mouseleave', () => drawing = false);
+      canvas.addEventListener('touchstart', e => { e.preventDefault(); drawing = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); }, { passive: false });
+      canvas.addEventListener('touchmove', e => { e.preventDefault(); if (!drawing) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); hasSig = true; document.getElementById('sigHint').style.display = 'none'; }, { passive: false });
+      canvas.addEventListener('touchend', () => drawing = false);
+    }
+
+    function resizeCanvas() {
+      const r = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * r;
+      canvas.height = rect.height * r;
+      ctx.scale(r, r);
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 2.2;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+    }
+
+    function getPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const s = e.touches ? e.touches[0] : e;
+      return { x: s.clientX - rect.left, y: s.clientY - rect.top };
+    }
+
+    function clearSig() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      hasSig = false;
+      document.getElementById('sigHint').style.display = 'block';
+    }
+
+    // ===== Submit =====
+    function submitForm() {
+      const nume = document.getElementById('nume').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const telefon = document.getElementById('telefon').value.trim();
+      const err = document.getElementById('errorMsg');
+
+      if (!nume || !email || !telefon) {
+        showError(err, 'Te rugăm să completezi toate câmpurile obligatorii: nume, email și telefon.');
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showError(err, 'Adresa de email nu este validă.');
+        return;
+      }
+      if (isMinor) {
+        const mn = document.getElementById('minorNume').value.trim();
+        const md = document.getElementById('minorDOB').value;
+        const mr = document.getElementById('minorRelatie').value.trim();
+        if (!mn || !md || !mr) {
+          showError(err, 'Te rugăm să completezi toate câmpurile pentru minor.');
+          return;
+        }
+      }
+      if (!hasSig) {
+        showError(err, 'Te rugăm să adaugi semnătura înainte de a confirma.');
+        return;
+      }
+
+      err.style.display = 'none';
+      document.getElementById('formWrap').style.display = 'none';
+      document.getElementById('successScreen').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showError(el, msg) {
+      el.textContent = msg;
+      el.style.display = 'block';
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // ===== Reset =====
+    function resetForm() {
+      document.getElementById('nume').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('telefon').value = '';
+      document.getElementById('minorNume').value = '';
+      document.getElementById('minorDOB').value = '';
+      document.getElementById('minorRelatie').value = '';
+
+      if (isMinor) toggleMinor();
+
+      // Clear all selections
+      document.querySelectorAll('.radio-item').forEach(el => {
+        el.classList.remove('selected');
+        const radio = el.querySelector('input[type="radio"]');
+        if (radio) radio.checked = false;
+      });
+
+      // Restore default Da selections
+      document.querySelectorAll('input[type="radio"][value="da"]').forEach(radio => {
+        radio.checked = true;
+        radio.closest('label').classList.add('selected');
+      });
+
+      clearSig();
+
+      document.getElementById('errorMsg').style.display = 'none';
+      document.getElementById('formWrap').style.display = 'block';
+      document.getElementById('successScreen').style.display = 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
